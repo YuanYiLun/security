@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple">
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/gwpsp?serverTimezone=GMT%2B8"
+                        userId="root"
+                        password="root">
+        </jdbcConnection>
+
+
+        <!--数据库字段对应的实体类属性类型
+    默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL
+    和 NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- javaBean的生成策略 -->
+        <javaModelGenerator targetPackage="cn.hyperchain.demo.bean"
+                            targetProject="C:\Users\YuanYanZhao\Desktop\国网链\litesdk\security\security-demo\src\main\java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true"/>
+
+        </javaModelGenerator>
+
+        <!-- SQL映射文件的生成策略 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="C:\Users\YuanYanZhao\Desktop\国网链\litesdk\security\security-demo\src\main\resources">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- Mapper接口的生成策略  -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.hyperchain.demo.mapper"
+                             targetProject="C:\Users\YuanYanZhao\Desktop\国网链\litesdk\security\security-demo\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="api" domainObjectName="AppEntity"></table>
+        <table tableName="app_log" domainObjectName="AppLogEntity"></table>
+        <table tableName="account" domainObjectName="AccountEntity"></table>
+
+    </context>
+</generatorConfiguration>
